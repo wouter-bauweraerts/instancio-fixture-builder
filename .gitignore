@@ -1,0 +1,6 @@
+.idea
+target
+log.base_IS_UNDEFINED/
+logs/
+
+*.flattened-pom.xml

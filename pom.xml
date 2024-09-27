@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>io.github.wouter-bauweraerts</groupId>
+    <artifactId>instancio-fixture-builder</artifactId>
+    <version>5.0.2</version>
+    <packaging>jar</packaging>
+
+    <description>
+        Library built on top of org.instancio.instancio-core.
+        Provides builder functionality to be used with test fixtures created with Instancio.
+        Allows to make an abstraction of the usage of instancio.
+    </description>
+
+    <properties>
+        <instancio.version>5.0.2</instancio.version>
+        <junit.version>5.11.1</junit.version>
+        <assertj.version>3.26.3</assertj.version>
+    </properties>
+
+    <developers>
+        <developer>
+            <name>Wouter Bauweraerts</name>
+            <url>https://github.com/wouter-bauweraerts</url>
+        </developer>
+    </developers>
+
+    <url>https://github.com/wouter-bauweraerts/instancio-fixture-builder</url>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://opensource.org/license/mit</url>
+            <comments>Copyright 2024 Wouter Bauweraerts</comments>
+        </license>
+    </licenses>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.instancio</groupId>
+            <artifactId>instancio-core</artifactId>
+            <version>${instancio.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>0.6.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <publishingServerId>central</publishingServerId>
+                    <autoPublish>true</autoPublish>
+                    <waitUntil>uploaded</waitUntil>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
