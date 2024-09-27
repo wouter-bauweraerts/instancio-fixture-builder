@@ -19,3 +19,8 @@ esrc/test/java/io/github/wouterbauweraerts/instancio/fixture/builder/SimplePojoF
 ]src/test/java/io/github/wouterbauweraerts/instancio/fixture/builder/dummy/PersonFixtures.java,f/f/ff8a01fc8af7cb64cd372e9737cc9732e96095ed
 –
 fsrc/test/java/io/github/wouterbauweraerts/instancio/fixture/builder/ComplexPojoFixtureBuilderTest.java,2/4/24c722398bceb95acb4efbc92bef583df51d1300
+:
+
+.gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
+9
+	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
