@@ -29,6 +29,21 @@ What if I introduced the builder pattern to my fixtures?
 It took me a few iterations to get me to the flexible solution I have now,
 but in my opinion it is something very useful. My entire team is using this pattern right now!
 
+## Installation
+
+### Maven
+Include the following dependency in your pom.xml
+```xml
+<dependency>
+    <groupId>io.github.wouter-bauweraerts</groupId>
+    <artifactId>instancio-fixture-builder</artifactId>
+    <version>5.0.2</version>
+</dependency>
+```
+
+Check [the Maven Central Repository](https://central.sonatype.com/artifact/io.github.wouter-bauweraerts/instancio-fixture-builder) for the most recent version.
+There you can also find how to include it with different build systems.
+
 ## How does it work?
 1. Create a class for your fixture
         
@@ -66,3 +81,10 @@ First of all, you'll have to learn how to create [Instancio Models](https://www.
 without having to instantiate the fixtures class. Return a new instance of the inner class.
 
 Check the full example [here](./example.md)
+
+## Releases
+Initial release: 5.0.2. For simplicity, I use the same versioning as Instancio.
+
+| Version   | Release date |
+| --------- | ------------ |
+| 5.0.2     | Sep 27 2024  |
