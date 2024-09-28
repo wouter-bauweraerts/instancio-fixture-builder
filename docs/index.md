@@ -85,6 +85,6 @@ Check the full example [here](./example.md)
 ## Releases
 Initial release: 5.0.2. For simplicity, I use the same versioning as Instancio.
 
-| Version   | Release date |
-| --------- | ------------ |
-| 5.0.2     | Sep 27 2024  |
+| Version | Release date |
+|---------|--------------|
+| 5.0.2   | Sep 27 2024  |
