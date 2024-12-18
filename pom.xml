@@ -4,7 +4,7 @@
 
     <groupId>io.github.wouter-bauweraerts</groupId>
     <artifactId>instancio-fixture-builder</artifactId>
-    <version>5.0.2</version>
+    <version>5.2.1</version>
     <packaging>jar</packaging>
 
     <description>
@@ -14,8 +14,8 @@
     </description>
 
     <properties>
-        <instancio.version>5.0.2</instancio.version>
-        <junit.version>5.11.1</junit.version>
+        <instancio.version>5.2.1</instancio.version>
+        <junit.version>5.11.4</junit.version>
         <assertj.version>3.26.3</assertj.version>
 
         <version.highlight.js>11.9.0</version.highlight.js>
@@ -78,8 +78,6 @@
             <version>${assertj.version}</version>
             <scope>test</scope>
         </dependency>
-
-
     </dependencies>
 
     <build>
