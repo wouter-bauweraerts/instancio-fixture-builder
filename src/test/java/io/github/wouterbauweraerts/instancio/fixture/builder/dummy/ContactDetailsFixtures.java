@@ -4,7 +4,6 @@ import static org.instancio.Select.allStrings;
 
 import org.instancio.Instancio;
 import org.instancio.Model;
-import org.instancio.Random;
 
 import io.github.wouterbauweraerts.instancio.fixture.builder.AbstractFixtureBuilder;
 
