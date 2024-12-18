@@ -1,4 +1,8 @@
 # Instancio Fixture Builder
+
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=wouter-bauweraerts_instancio-fixture-builder&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=wouter-bauweraerts_instancio-fixture-builder)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=wouter-bauweraerts_instancio-fixture-builder&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=wouter-bauweraerts_instancio-fixture-builder)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=wouter-bauweraerts_instancio-fixture-builder&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=wouter-bauweraerts_instancio-fixture-builder)
 ## What is Instancio
 
 > Instancio is a library for instantiating and populating objects with random data, 
