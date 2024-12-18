@@ -3,5 +3,5 @@ plugins:
   - jekyll-remote-theme
 
 title: Instancio Extension - Fixture Builder
-description: Describe how the instancio-fixture-builder can be used
+description: instancio-fixture-builder usage documentation
 show_downloads: false
