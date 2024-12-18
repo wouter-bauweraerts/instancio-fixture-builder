@@ -41,7 +41,7 @@ Include the following dependency in your pom.xml
 <dependency>
     <groupId>io.github.wouter-bauweraerts</groupId>
     <artifactId>instancio-fixture-builder</artifactId>
-    <version>5.0.2</version>
+    <version>5.2.1</version>
 </dependency>
 ```
 
@@ -52,7 +52,7 @@ There you can also find how to include it with different build systems.
 1. Create a class for your fixture
         
         Example: SomePojo class --> SomePojoFixtures
-2. Create a static inner class that extends the ___AbstractFixtureBuilder.
+2. Create a static inner class that extends __AbstractFixtureBuilder__.
    
         The AbstractFixtureBuilder requires 2 generic parameters.
             - TYPEBUILDER: the (POJO) class that you want to initialize with (random) data
