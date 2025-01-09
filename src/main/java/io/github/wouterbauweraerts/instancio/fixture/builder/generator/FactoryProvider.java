@@ -17,4 +17,16 @@ class FactoryProvider {
     static NameFactory nameFactory() {
         return new NameFactory();
     }
+
+    static FixtureBuilderFactory fixtureBuilderFactory() {
+        return new FixtureBuilderFactory();
+    }
+
+    static JavaFileFactory fileFactory() {
+        return new JavaFileFactory();
+    }
+
+    static GeneratedAnnotationFactory generatedAnnotationFactory() {
+        return new GeneratedAnnotationFactory();
+    }
 }
