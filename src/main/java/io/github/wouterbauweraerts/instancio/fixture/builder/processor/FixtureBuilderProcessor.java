@@ -21,6 +21,7 @@ import com.google.auto.service.AutoService;
 import io.github.wouterbauweraerts.instancio.fixture.builder.GenerateFixtureBuilder;
 import io.github.wouterbauweraerts.instancio.fixture.builder.generator.FixtureBuilderGenerator;
 
+@SuppressWarnings("unused")
 @SupportedAnnotationTypes("io.github.wouterbauweraerts.instancio.fixture.builder.GenerateFixtureBuilder")
 @SupportedSourceVersion(SourceVersion.RELEASE_17)
 @AutoService(Processor.class)

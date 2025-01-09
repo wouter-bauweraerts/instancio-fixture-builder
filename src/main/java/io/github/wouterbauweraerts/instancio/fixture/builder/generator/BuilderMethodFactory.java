@@ -1,8 +1,5 @@
 package io.github.wouterbauweraerts.instancio.fixture.builder.generator;
 
-import static io.github.wouterbauweraerts.instancio.fixture.builder.generator.IgnoreMethodFactory.*;
-import static io.github.wouterbauweraerts.instancio.fixture.builder.generator.WithMethodFactory.generateWithMethod;
-
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -16,11 +13,23 @@ import javax.lang.model.util.Types;
 
 import com.palantir.javapoet.MethodSpec;
 
-public class BuilderMethodFactory {
-    private BuilderMethodFactory() {
+class BuilderMethodFactory {
+
+    private final BuildMethodFactory buildMethodFactory;
+    private final SelfMethodFactory selfMethodFactory;
+    private final WithMethodFactory withMethodFactory;
+    private final IgnoreMethodFactory ignoreMethodFactory;
+    private final MethodNameFactory methodNameFactory;
+
+    BuilderMethodFactory(BuildMethodFactory buildMethodFactory, SelfMethodFactory selfMethodFactory, WithMethodFactory withMethodFactory, IgnoreMethodFactory ignoreMethodFactory, MethodNameFactory methodNameFactory) {
+        this.buildMethodFactory = buildMethodFactory;
+        this.selfMethodFactory = selfMethodFactory;
+        this.withMethodFactory = withMethodFactory;
+        this.ignoreMethodFactory = ignoreMethodFactory;
+        this.methodNameFactory = methodNameFactory;
     }
 
-    public static List<MethodSpec> generate(ProcessingEnvironment processingEnv, Element typeToBuild, String builderClassName) {
+    List<MethodSpec> generateFieldMethods(ProcessingEnvironment processingEnv, Element typeToBuild, String builderClassName) {
         Types typeUtils = processingEnv.getTypeUtils();
         Elements elementUtils = processingEnv.getElementUtils();
 
@@ -37,14 +46,21 @@ public class BuilderMethodFactory {
                 .toList();
     }
 
-    private static Stream<MethodSpec> generateBuilderMethodsForField(String fieldName, String qualifiedTypeName, String builderClassName) {
-        String withMethodName = "with" + Character.toUpperCase(fieldName.charAt(0)) + fieldName.substring(1);
-        String ignoreMethodName = "ignore" + Character.toUpperCase(fieldName.charAt(0)) + fieldName.substring(1);
+    private Stream<MethodSpec> generateBuilderMethodsForField(String fieldName, String qualifiedTypeName, String builderClassName) {
+        String withMethodName = methodNameFactory.fieldMethodWithPrefix("with", fieldName);
+        String ignoreMethodName = methodNameFactory.fieldMethodWithPrefix("ignore", fieldName);
 
         return Stream.of(
-                generateWithMethod(withMethodName, fieldName, qualifiedTypeName, builderClassName),
-                generateIgnoreMethod(ignoreMethodName, withMethodName, builderClassName)
+                withMethodFactory.generateWithMethod(withMethodName, fieldName, qualifiedTypeName, builderClassName),
+                ignoreMethodFactory.generateIgnoreMethod(ignoreMethodName, withMethodName, builderClassName)
         );
     }
 
+    public MethodSpec generateSelf(String builderClassName) {
+        return selfMethodFactory.generateSelf(builderClassName);
+    }
+
+    public MethodSpec generateBuild(Element model, String typeToBuild) {
+        return buildMethodFactory.generateBuild(model, typeToBuild);
+    }
 }

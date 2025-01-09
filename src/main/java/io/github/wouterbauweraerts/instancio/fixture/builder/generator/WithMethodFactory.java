@@ -7,11 +7,8 @@ import org.instancio.Select;
 import com.palantir.javapoet.ClassName;
 import com.palantir.javapoet.MethodSpec;
 
-public class WithMethodFactory {
-    private WithMethodFactory() {
-    }
-
-    public static MethodSpec generateWithMethod(String withMethodName, String fieldName, String qualifiedTypeName, String builderClassName) {
+class WithMethodFactory {
+    MethodSpec generateWithMethod(String withMethodName, String fieldName, String qualifiedTypeName, String builderClassName) {
         return MethodSpec.methodBuilder(withMethodName)
                 .addModifiers(PUBLIC)
                 .returns(ClassName.bestGuess(builderClassName))

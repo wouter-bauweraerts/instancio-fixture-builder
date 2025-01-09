@@ -8,10 +8,7 @@ import com.palantir.javapoet.ClassName;
 import com.palantir.javapoet.MethodSpec;
 
 class BuildMethodFactory {
-    private BuildMethodFactory() {
-    }
-
-    static MethodSpec generate(Element model, String returnType) {
+    MethodSpec generateBuild(Element model, String returnType) {
         return MethodSpec.methodBuilder("build")
                 .addModifiers(PUBLIC)
                 .addAnnotation(Override.class)

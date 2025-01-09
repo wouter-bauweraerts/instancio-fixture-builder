@@ -16,8 +16,10 @@ import com.palantir.javapoet.AnnotationSpec;
 class BuildMethodFactoryTest {
     private static final String METHOD_BODY_PATTERN = "return buildInternal(%s);%n";
 
+    BuildMethodFactory buildMethodFactory = new BuildMethodFactory();
+
     @Test
-    void generte_generatesExpectedMethod() {
+    void generateBuild_generatesExpectedMethod() {
         AnnotationSpec overrideAnnotationsSpec = AnnotationSpec.builder(Override.class).build();
         String returnType = Instancio.create(String.class);
         String simpleName = Instancio.create(String.class);
@@ -28,7 +30,7 @@ class BuildMethodFactoryTest {
         when(element.getSimpleName()).thenReturn(name);
         when(name.toString()).thenReturn(simpleName);
 
-        assertThat(BuildMethodFactory.generate(element, returnType))
+        assertThat(buildMethodFactory.generateBuild(element, returnType))
                 .returns(true, ms -> ms.modifiers().contains(PUBLIC))
                 .returns(true, ms -> ms.annotations().contains(overrideAnnotationsSpec))
                 .returns(returnType, ms -> ms.returnType().toString())

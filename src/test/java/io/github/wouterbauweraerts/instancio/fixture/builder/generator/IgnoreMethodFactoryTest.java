@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Test;
 class IgnoreMethodFactoryTest {
     private static final String METHOD_BODY_PATTERN = "return %s(null);%n";
 
+    IgnoreMethodFactory factory = new IgnoreMethodFactory();
+
     @Test
     void generte_generatesExpectedMethod() {
 
@@ -16,7 +18,7 @@ class IgnoreMethodFactoryTest {
         String withMethodName = Instancio.create(String.class);
         String builderClassname = Instancio.create(String.class);
 
-        assertThat(IgnoreMethodFactory.generateIgnoreMethod(ignoreMethodName, withMethodName, builderClassname))
+        assertThat(factory.generateIgnoreMethod(ignoreMethodName, withMethodName, builderClassname))
                 .returns(true, ms -> ms.modifiers().contains(PUBLIC))
                 .returns(builderClassname, ms -> ms.returnType().toString())
                 .returns(METHOD_BODY_PATTERN.formatted(withMethodName), ms -> ms.code().toString());

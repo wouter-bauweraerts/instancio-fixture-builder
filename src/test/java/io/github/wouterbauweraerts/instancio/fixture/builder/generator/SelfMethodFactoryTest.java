@@ -9,12 +9,13 @@ import org.junit.jupiter.api.Test;
 import com.palantir.javapoet.AnnotationSpec;
 
 class SelfMethodFactoryTest {
+    SelfMethodFactory selfMethodFactory = new SelfMethodFactory();
     @Test
-    void generateReturnsExpectedMethodSpec() {
+    void generateSelf_returnsExpectedMethodSpec() {
         AnnotationSpec overrideAnnotationSpec = AnnotationSpec.builder(Override.class).build();
         String returnType = Instancio.create(String.class);
 
-        assertThat(SelfMethodFactory.generate(returnType))
+        assertThat(selfMethodFactory.generateSelf(returnType))
                 .returns(returnType, ms -> ms.returnType().toString())
                 .returns("return this;\n", ms -> ms.code().toString())
                 .returns(true, ms -> ms.annotations().contains(overrideAnnotationSpec))
