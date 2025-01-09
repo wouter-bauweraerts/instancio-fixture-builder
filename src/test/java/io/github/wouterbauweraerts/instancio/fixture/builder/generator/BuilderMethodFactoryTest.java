@@ -26,7 +26,7 @@ class BuilderMethodFactoryTest {
     @Mock
     IgnoreMethodFactory ignoreMethodFactory;
     @Mock
-    MethodNameFactory methodNameFactory;
+    NameFactory nameFactory;
 
     @Test
     void generateSelf_delegatesToExpectedFactory() {

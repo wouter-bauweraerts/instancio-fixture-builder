@@ -24,9 +24,9 @@ class FactoryProviderTest {
         assertThat(getPrivateField(factory, "ignoreMethodFactory"))
                 .isNotNull()
                 .isInstanceOf(IgnoreMethodFactory.class);
-        assertThat(getPrivateField(factory, "methodNameFactory"))
+        assertThat(getPrivateField(factory, "nameFactory"))
                 .isNotNull()
-                .isInstanceOf(MethodNameFactory.class);
+                .isInstanceOf(NameFactory.class);
     }
 
     private Object getPrivateField(Object instance, String fieldName) throws Exception {

@@ -19,14 +19,14 @@ class BuilderMethodFactory {
     private final SelfMethodFactory selfMethodFactory;
     private final WithMethodFactory withMethodFactory;
     private final IgnoreMethodFactory ignoreMethodFactory;
-    private final MethodNameFactory methodNameFactory;
+    private final NameFactory nameFactory;
 
-    BuilderMethodFactory(BuildMethodFactory buildMethodFactory, SelfMethodFactory selfMethodFactory, WithMethodFactory withMethodFactory, IgnoreMethodFactory ignoreMethodFactory, MethodNameFactory methodNameFactory) {
+    BuilderMethodFactory(BuildMethodFactory buildMethodFactory, SelfMethodFactory selfMethodFactory, WithMethodFactory withMethodFactory, IgnoreMethodFactory ignoreMethodFactory, NameFactory nameFactory) {
         this.buildMethodFactory = buildMethodFactory;
         this.selfMethodFactory = selfMethodFactory;
         this.withMethodFactory = withMethodFactory;
         this.ignoreMethodFactory = ignoreMethodFactory;
-        this.methodNameFactory = methodNameFactory;
+        this.nameFactory = nameFactory;
     }
 
     List<MethodSpec> generateFieldMethods(ProcessingEnvironment processingEnv, Element typeToBuild, String builderClassName) {
@@ -47,8 +47,8 @@ class BuilderMethodFactory {
     }
 
     private Stream<MethodSpec> generateBuilderMethodsForField(String fieldName, String qualifiedTypeName, String builderClassName) {
-        String withMethodName = methodNameFactory.fieldMethodWithPrefix("with", fieldName);
-        String ignoreMethodName = methodNameFactory.fieldMethodWithPrefix("ignore", fieldName);
+        String withMethodName = nameFactory.fieldMethodWithPrefix("with", fieldName);
+        String ignoreMethodName = nameFactory.fieldMethodWithPrefix("ignore", fieldName);
 
         return Stream.of(
                 withMethodFactory.generateWithMethod(withMethodName, fieldName, qualifiedTypeName, builderClassName),

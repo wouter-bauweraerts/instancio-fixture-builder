@@ -10,7 +10,11 @@ class FactoryProvider {
                 new SelfMethodFactory(),
                 new WithMethodFactory(),
                 new IgnoreMethodFactory(),
-                new MethodNameFactory()
+                nameFactory()
         );
+    }
+
+    static NameFactory nameFactory() {
+        return new NameFactory();
     }
 }
