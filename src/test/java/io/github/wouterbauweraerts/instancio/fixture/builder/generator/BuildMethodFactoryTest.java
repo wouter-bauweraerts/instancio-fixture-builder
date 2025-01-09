@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 
 import com.palantir.javapoet.AnnotationSpec;
 
-class BuildMethodGeneratorTest {
+class BuildMethodFactoryTest {
     private static final String METHOD_BODY_PATTERN = "return buildInternal(%s);%n";
 
     @Test
@@ -28,7 +28,7 @@ class BuildMethodGeneratorTest {
         when(element.getSimpleName()).thenReturn(name);
         when(name.toString()).thenReturn(simpleName);
 
-        assertThat(BuildMethodGenerator.generate(element, returnType))
+        assertThat(BuildMethodFactory.generate(element, returnType))
                 .returns(true, ms -> ms.modifiers().contains(PUBLIC))
                 .returns(true, ms -> ms.annotations().contains(overrideAnnotationsSpec))
                 .returns(returnType, ms -> ms.returnType().toString())

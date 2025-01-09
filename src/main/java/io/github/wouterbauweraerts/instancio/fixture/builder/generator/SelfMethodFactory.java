@@ -5,7 +5,10 @@ import static javax.lang.model.element.Modifier.PUBLIC;
 import com.palantir.javapoet.ClassName;
 import com.palantir.javapoet.MethodSpec;
 
-public class SelfMethodGenerator {
+public class SelfMethodFactory {
+    private SelfMethodFactory() {
+    }
+
     public static MethodSpec generate(String returnType) {
         return MethodSpec.methodBuilder("self")
                 .addAnnotation(Override.class)

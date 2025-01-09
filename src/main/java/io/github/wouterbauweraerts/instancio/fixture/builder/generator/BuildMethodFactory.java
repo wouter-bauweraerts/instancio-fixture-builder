@@ -7,8 +7,8 @@ import javax.lang.model.element.Element;
 import com.palantir.javapoet.ClassName;
 import com.palantir.javapoet.MethodSpec;
 
-class BuildMethodGenerator {
-    private BuildMethodGenerator() {
+class BuildMethodFactory {
+    private BuildMethodFactory() {
     }
 
     static MethodSpec generate(Element model, String returnType) {

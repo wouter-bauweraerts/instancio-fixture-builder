@@ -1,6 +1,7 @@
 package io.github.wouterbauweraerts.instancio.fixture.builder.generator;
 
-import static javax.lang.model.element.Modifier.PUBLIC;
+import static io.github.wouterbauweraerts.instancio.fixture.builder.generator.IgnoreMethodFactory.*;
+import static io.github.wouterbauweraerts.instancio.fixture.builder.generator.WithMethodFactory.generateWithMethod;
 
 import java.util.List;
 import java.util.Map;
@@ -13,12 +14,12 @@ import javax.lang.model.element.ElementKind;
 import javax.lang.model.util.Elements;
 import javax.lang.model.util.Types;
 
-import org.instancio.Select;
-
-import com.palantir.javapoet.ClassName;
 import com.palantir.javapoet.MethodSpec;
 
-public class BuilderMethodGenerator {
+public class BuilderMethodFactory {
+    private BuilderMethodFactory() {
+    }
+
     public static List<MethodSpec> generate(ProcessingEnvironment processingEnv, Element typeToBuild, String builderClassName) {
         Types typeUtils = processingEnv.getTypeUtils();
         Elements elementUtils = processingEnv.getElementUtils();
@@ -46,20 +47,4 @@ public class BuilderMethodGenerator {
         );
     }
 
-    private static MethodSpec generateWithMethod(String withMethodName, String fieldName, String qualifiedTypeName, String builderClassName) {
-        return MethodSpec.methodBuilder(withMethodName)
-                .addModifiers(PUBLIC)
-                .returns(ClassName.bestGuess(builderClassName))
-                .addParameter(ClassName.bestGuess(qualifiedTypeName), fieldName)
-                .addStatement("return set($T.field(\"%s\"), %s)".formatted(fieldName, fieldName), Select.class)
-                .build();
-    }
-
-    private static MethodSpec generateIgnoreMethod(String ignoreMethodName, String withMethodName, String builderClassName) {
-        return MethodSpec.methodBuilder(ignoreMethodName)
-                .addModifiers(PUBLIC)
-                .returns(ClassName.bestGuess(builderClassName))
-                .addCode("return %s(null);%n".formatted(withMethodName))
-                .build();
-    }
 }
