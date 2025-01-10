@@ -93,17 +93,6 @@
             <scope>test</scope>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>org.jboss.forge.roaster</groupId>-->
-<!--            <artifactId>roaster-api</artifactId>-->
-<!--            <version>${roaster.version}</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.jboss.forge.roaster</groupId>-->
-<!--            <artifactId>roaster-jdt</artifactId>-->
-<!--            <version>${roaster.version}</version>-->
-<!--            <scope>runtime</scope>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>com.palantir.javapoet</groupId>
             <artifactId>javapoet</artifactId>
@@ -236,30 +225,6 @@
                     <arguments>-Pupdate-latest-release-version</arguments>
                 </configuration>
             </plugin>
-<!--            <plugin>-->
-<!--                <groupId>org.codehaus.mojo</groupId>-->
-<!--                <artifactId>animal-sniffer-maven-plugin</artifactId>-->
-<!--                <version>${version.animal-sniffer-maven-plugin}</version>-->
-<!--                <configuration>-->
-<!--                    <signature>-->
-<!--                        <groupId>org.codehaus.mojo.signature</groupId>-->
-<!--                        <artifactId>Java17</artifactId>-->
-<!--                        <version>1.0</version>-->
-<!--                    </signature>-->
-<!--                    <annotations>-->
-<!--                        <annotation>org.instancio.internal.util.IgnoreJRERequirement</annotation>-->
-<!--                    </annotations>-->
-<!--                    <checkTestClasses>true</checkTestClasses>-->
-<!--                </configuration>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>animal-sniffer</id>-->
-<!--                        <goals>-->
-<!--                            <goal>check</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
@@ -293,6 +258,5 @@
             <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
-
 
 </project>
