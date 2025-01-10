@@ -6,7 +6,11 @@ import com.palantir.javapoet.ClassName;
 import com.palantir.javapoet.MethodSpec;
 
 class IgnoreMethodFactory {
-    MethodSpec generateIgnoreMethod(String ignoreMethodName, String withMethodName, String builderClassName) {
+    MethodSpec generateIgnoreMethod(String ignoreMethodName, String withMethodName, String builderClassName, boolean isPrimitive) {
+        if (isPrimitive) {
+            return null;
+        }
+
         return MethodSpec.methodBuilder(ignoreMethodName)
                 .addModifiers(PUBLIC)
                 .returns(ClassName.bestGuess(builderClassName))

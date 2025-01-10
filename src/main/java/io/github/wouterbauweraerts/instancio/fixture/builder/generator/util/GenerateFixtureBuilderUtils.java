@@ -5,6 +5,7 @@ import static java.util.Objects.nonNull;
 import javax.annotation.processing.ProcessingEnvironment;
 import javax.lang.model.element.AnnotationMirror;
 import javax.lang.model.element.Element;
+import javax.lang.model.element.VariableElement;
 import javax.lang.model.type.TypeMirror;
 
 import io.github.wouterbauweraerts.instancio.fixture.builder.InstancioModel;
