@@ -4,7 +4,7 @@
 
     <groupId>io.github.wouter-bauweraerts</groupId>
     <artifactId>instancio-fixture-builder</artifactId>
-    <version>5.2.1</version>
+    <version>5.2.1-ap</version>
     <packaging>jar</packaging>
 
     <description>
@@ -14,9 +14,14 @@
     </description>
 
     <properties>
+        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+
         <instancio.version>5.2.1</instancio.version>
         <junit.version>5.11.4</junit.version>
         <assertj.version>3.26.3</assertj.version>
+
+        <roaster.version>2.30.1.Final</roaster.version>
 
         <version.highlight.js>11.9.0</version.highlight.js>
         <version.animal-sniffer-maven-plugin>1.24</version.animal-sniffer-maven-plugin>
@@ -36,6 +41,8 @@
         <version.sonar-maven-plugin>4.0.0.4121</version.sonar-maven-plugin>
         <version.spotbugs-maven-plugin>4.8.6.4</version.spotbugs-maven-plugin>
         <version.versions-maven-plugin>2.17.1</version.versions-maven-plugin>
+        <auto-service.version>1.1.1</auto-service.version>
+        <mockito.version>5.15.2</mockito.version>
     </properties>
 
     <developers>
@@ -73,10 +80,29 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <version>${mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>${assertj.version}</version>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.palantir.javapoet</groupId>
+            <artifactId>javapoet</artifactId>
+            <version>0.6.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.auto.service</groupId>
+            <artifactId>auto-service</artifactId>
+            <version>${auto-service.version}</version>
         </dependency>
     </dependencies>
 
@@ -115,7 +141,7 @@
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>${version.maven-javadoc-plugin}</version>
                 <configuration>
-                    <source>8</source>
+                    <source>17</source>
                     <!-- Some public APIs extend package-private classes.
                          This ensures {@inheritDoc} works in such cases. -->
                     <show>package</show>
@@ -139,6 +165,15 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>${version.maven-jar-plugin}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>
+                                test-jar
+                            </goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.felix</groupId>
@@ -191,30 +226,6 @@
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>animal-sniffer-maven-plugin</artifactId>
-                <version>${version.animal-sniffer-maven-plugin}</version>
-                <configuration>
-                    <signature>
-                        <groupId>org.codehaus.mojo.signature</groupId>
-                        <artifactId>java18</artifactId>
-                        <version>1.0</version>
-                    </signature>
-                    <annotations>
-                        <annotation>org.instancio.internal.util.IgnoreJRERequirement</annotation>
-                    </annotations>
-                    <checkTestClasses>true</checkTestClasses>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>animal-sniffer</id>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
                 <version>${version.maven-ant-plugin}</version>
@@ -247,6 +258,5 @@
             <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
-
 
 </project>
