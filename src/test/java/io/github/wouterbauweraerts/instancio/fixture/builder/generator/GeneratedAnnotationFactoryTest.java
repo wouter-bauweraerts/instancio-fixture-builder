@@ -17,7 +17,7 @@ class GeneratedAnnotationFactoryTest {
     void createAnnotation_returnsExpectedAnnotationSpec() {
         AnnotationSpec annotation = factory.createAnnotation();
 
-        assertThat(annotation.type().toString()).isEqualTo("javax.annotation.processing.Generated");
+        assertThat(annotation.type()).hasToString("javax.annotation.processing.Generated");
         assertThat(annotation.members().get("value")).isNotNull()
                 .hasSize(1)
                 .extracting(CodeBlock::toString)
