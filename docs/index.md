@@ -97,6 +97,7 @@ Initial release: 5.0.2. For simplicity, I use the same versioning as Instancio.
 |---------|--------------|
 | 5.0.2   | Sep 27 2024  |
 | 5.2.1   | Dec 18 2024  |
+| 5.2.1-ap| Jan 10 2025  |
 
 ## Changelog
 ### 5.0.2
@@ -105,9 +106,13 @@ Initial release: 5.0.2. For simplicity, I use the same versioning as Instancio.
 ### 5.2.1
 - Bump instancio version to version 5.2.1
 
-### NEXT
-- Bump instancio version to {{LATEST}}
+### 5.2.1
 - Add annotation processing / FixtureBuilder code generation
 
+__Usage Notes:__ 
+To use the annotation processing, make sure that your project uses at least Java 17! 
+
+Code generation has been tested in IntelliJ IDEA 2024.3.1.1 (Ultimate Edition) using both Maven and Gradle on JDK21.
+
 ## Problems / Feature Requests
-If you encounter an issue or if you have a feature request, please submit a GitHub issue!
+If you encounter an issue or if you have a feature request, please [submit a GitHub issue!](https://github.com/wouter-bauweraerts/instancio-fixture-builder/issues)
