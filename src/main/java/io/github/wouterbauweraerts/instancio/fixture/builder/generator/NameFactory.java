@@ -1,7 +1,6 @@
 package io.github.wouterbauweraerts.instancio.fixture.builder.generator;
 
 import javax.annotation.Nonnull;
-import javax.lang.model.element.Element;
 
 public class NameFactory {
     static final String FIXTURE_BUILDER_SUFFIX = "FixtureBuilder";
