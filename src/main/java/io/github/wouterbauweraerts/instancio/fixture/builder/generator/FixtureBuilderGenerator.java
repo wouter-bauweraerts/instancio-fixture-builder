@@ -28,7 +28,7 @@ public class FixtureBuilderGenerator {
 
     public FixtureBuilderGenerator(ProcessingEnvironment processingEnv) {
         this.processingEnv = processingEnv;
-        methodFactory = FactoryProvider.builderMethodFactory();
+        methodFactory = FactoryProvider.builderMethodFactory(processingEnv);
         nameFactory = FactoryProvider.nameFactory();
         fixtureBuilderFactory = FactoryProvider.fixtureBuilderFactory();
         javaFileFactory = FactoryProvider.fileFactory();
@@ -49,7 +49,7 @@ public class FixtureBuilderGenerator {
 
         MethodSpec selfMethod = methodFactory.generateSelf(builderClassName);
         MethodSpec buildMethod = methodFactory.generateBuild(model, builderForClass.getSimpleName().toString());
-        List<MethodSpec> fieldMethods = methodFactory.generateFieldMethods(processingEnv, builderForClass, builderClassName);
+        List<MethodSpec> fieldMethods = methodFactory.generateFieldMethods(builderForClass, builderClassName);
 
         TypeSpec fixtureBuilderClassDefinition = fixtureBuilderFactory.createBuilderSpec(
                 builderClassName,

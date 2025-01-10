@@ -6,16 +6,13 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import javax.annotation.processing.ProcessingEnvironment;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.ElementKind;
-import javax.lang.model.util.Elements;
-import javax.lang.model.util.Types;
 
 import com.palantir.javapoet.MethodSpec;
-import com.palantir.javapoet.TypeName;
 
 import io.github.wouterbauweraerts.instancio.fixture.builder.generator.parameter.ParamType;
+import io.github.wouterbauweraerts.instancio.fixture.builder.generator.util.GenerateFixtureBuilderUtils;
 
 class BuilderMethodFactory {
 
@@ -25,45 +22,29 @@ class BuilderMethodFactory {
     private final IgnoreMethodFactory ignoreMethodFactory;
     private final NameFactory nameFactory;
 
-    BuilderMethodFactory(BuildMethodFactory buildMethodFactory, SelfMethodFactory selfMethodFactory, WithMethodFactory withMethodFactory, IgnoreMethodFactory ignoreMethodFactory, NameFactory nameFactory) {
+    private final GenerateFixtureBuilderUtils utils;
+
+    BuilderMethodFactory(BuildMethodFactory buildMethodFactory, SelfMethodFactory selfMethodFactory, WithMethodFactory withMethodFactory, IgnoreMethodFactory ignoreMethodFactory, NameFactory nameFactory, GenerateFixtureBuilderUtils utils) {
         this.buildMethodFactory = buildMethodFactory;
         this.selfMethodFactory = selfMethodFactory;
         this.withMethodFactory = withMethodFactory;
         this.ignoreMethodFactory = ignoreMethodFactory;
         this.nameFactory = nameFactory;
+        this.utils = utils;
     }
 
-    List<MethodSpec> generateFieldMethods(ProcessingEnvironment processingEnv, Element typeToBuild, String builderClassName) {
-        Types typeUtils = processingEnv.getTypeUtils();
-        Elements elementUtils = processingEnv.getElementUtils();
-
+    List<MethodSpec> generateFieldMethods(Element typeToBuild, String builderClassName) {
         Map<String, ParamType> fields = typeToBuild.getEnclosedElements().stream()
                 .filter(e -> e.getKind().equals(ElementKind.FIELD))
                 .collect(Collectors.toMap(
                         element -> element.getSimpleName().toString(),
-                        e -> extractParameterTypeName(e, elementUtils, typeUtils)
+                        utils::extractParamType
                 ));
 
         return fields.entrySet()
                 .stream()
                 .flatMap(e -> generateBuilderMethodsForField(e.getKey(), e.getValue(), builderClassName))
                 .toList();
-    }
-
-    private static ParamType extractParameterTypeName(Element e, Elements elementUtils, Types typeUtils) {
-        boolean isPrimitiveType = e.asType().getKind()
-                .isPrimitive();
-        if (isPrimitiveType) {
-            return ParamType.of(TypeName.get(e.asType()));
-        }
-        return ParamType.of(
-                typeUtils.asElement(e.asType()).toString()
-//                elementUtils.getName(
-//                        typeUtils.asElement(e.asType())
-//                                .getSimpleName()
-//                                .toString()
-//                ).toString()
-        );
     }
 
     private Stream<MethodSpec> generateBuilderMethodsForField(String fieldName, ParamType paramType, String builderClassName) {

@@ -1,16 +1,21 @@
 package io.github.wouterbauweraerts.instancio.fixture.builder.generator;
 
+import javax.annotation.processing.ProcessingEnvironment;
+
+import io.github.wouterbauweraerts.instancio.fixture.builder.generator.util.GenerateFixtureBuilderUtils;
+
 class FactoryProvider {
     private FactoryProvider() {
     }
 
-    static BuilderMethodFactory builderMethodFactory() {
+    static BuilderMethodFactory builderMethodFactory(ProcessingEnvironment processingEnv) {
         return new BuilderMethodFactory(
                 new BuildMethodFactory(),
                 new SelfMethodFactory(),
                 new WithMethodFactory(),
                 new IgnoreMethodFactory(),
-                nameFactory()
+                nameFactory(),
+                new GenerateFixtureBuilderUtils(processingEnv)
         );
     }
 

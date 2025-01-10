@@ -26,14 +26,10 @@ class IgnoreMethodFactoryTest {
 
     @Test
     void generate_whenIsPrimitive_returnsNull() {
-
         String ignoreMethodName = Instancio.create(String.class);
         String withMethodName = Instancio.create(String.class);
         String builderClassname = Instancio.create(String.class);
 
-        assertThat(factory.generateIgnoreMethod(ignoreMethodName, withMethodName, builderClassname, false))
-                .returns(true, ms -> ms.modifiers().contains(PUBLIC))
-                .returns(builderClassname, ms -> ms.returnType().toString())
-                .returns(METHOD_BODY_PATTERN.formatted(withMethodName), ms -> ms.code().toString());
+        assertThat(factory.generateIgnoreMethod(ignoreMethodName, withMethodName, builderClassname, true)).isNull();
     }
 }

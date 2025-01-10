@@ -7,8 +7,11 @@ import javax.lang.model.element.AnnotationMirror;
 import javax.lang.model.element.Element;
 import javax.lang.model.type.TypeMirror;
 
+import com.palantir.javapoet.TypeName;
+
 import io.github.wouterbauweraerts.instancio.fixture.builder.InstancioModel;
 import io.github.wouterbauweraerts.instancio.fixture.builder.generator.exception.FixtureBuilderGenerationException;
+import io.github.wouterbauweraerts.instancio.fixture.builder.generator.parameter.ParamType;
 
 public class GenerateFixtureBuilderUtils {
     static final String GENERATE_FIXTURE_BUILDER_QUALIFIED_NAME = "io.github.wouterbauweraerts.instancio.fixture.builder.GenerateFixtureBuilder";
@@ -43,5 +46,19 @@ public class GenerateFixtureBuilderUtils {
 
     public String extractPackageName(Element classElement) {
         return processingEnv.getElementUtils().getPackageOf(classElement).getQualifiedName().toString();
+    }
+
+    public ParamType extractParamType(Element element) {
+        boolean isPrimitiveType = element.asType().getKind().isPrimitive();
+
+        if (isPrimitiveType) {
+            return ParamType.of(
+                    TypeName.get(element.asType())
+            );
+        }
+
+        return ParamType.of(
+                processingEnv.getTypeUtils().asElement(element.asType()).toString()
+        );
     }
 }
