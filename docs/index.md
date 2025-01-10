@@ -80,11 +80,15 @@ First of all, you'll have to learn how to create [Instancio Models](https://www.
         return buildInternal(MODEL_CREATED_IN_STEP_3);
    }
    ```
+   
+__Code Generation:__ The manual implementation of the AbstractFixtureBuilder requires boilerplate code.
+This can be avoided by [generating the Fixture Builder implementation.](./example-with-annotation-processing.md)
 
 6. Provide a static method in the wrapper class that facilitates the creation of the fixture builder 
 without having to instantiate the fixtures class. Return a new instance of the inner class.
 
-Check the full example [here](./example.md)
+Check the full example (without annotation processing) [here](./example-without-annotation-processing)
+Check the full example (with annotation processing) [here](./example-with-annotation-processing)
 
 ## Releases
 Initial release: 5.0.2. For simplicity, I use the same versioning as Instancio.
@@ -93,3 +97,17 @@ Initial release: 5.0.2. For simplicity, I use the same versioning as Instancio.
 |---------|--------------|
 | 5.0.2   | Sep 27 2024  |
 | 5.2.1   | Dec 18 2024  |
+
+## Changelog
+### 5.0.2
+- Initial release. Expose AbstractFixtureBuilde
+
+### 5.2.1
+- Bump instancio version to version 5.2.1
+
+### NEXT
+- Bump instancio version to {{LATEST}}
+- Add annotation processing / FixtureBuilder code generation
+
+## Problems / Feature Requests
+If you encounter an issue or if you have a feature request, please submit a GitHub issue!

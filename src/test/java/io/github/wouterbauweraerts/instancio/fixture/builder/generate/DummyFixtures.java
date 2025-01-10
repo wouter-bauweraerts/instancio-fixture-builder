@@ -10,8 +10,8 @@ import io.github.wouterbauweraerts.instancio.fixture.builder.InstancioModel;
 import io.github.wouterbauweraerts.instancio.fixture.builder.dummy.ContactDetailsFixtures;
 import io.github.wouterbauweraerts.instancio.fixture.builder.dummy.Person;
 
-@GenerateFixtureBuilder(builderForType = Dummy.class, fixtureClass = DummyFixtures.class)
 @SuppressWarnings("unused")
+@GenerateFixtureBuilder(builderForType = Dummy.class, fixtureClass = DummyFixtures.class)
 public class DummyFixtures {
     @InstancioModel
     static final Model<Dummy> DUMMY_MODEL = Instancio.of(Dummy.class)
