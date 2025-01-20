@@ -93,11 +93,11 @@ Check the full example (with annotation processing) [here](./example-with-annota
 ## Releases
 Initial release: 5.0.2. For simplicity, I use the same versioning as Instancio.
 
-| Version | Release date |
-|---------|--------------|
-| 5.0.2   | Sep 27 2024  |
-| 5.2.1   | Dec 18 2024  |
-| 5.2.1-ap| Jan 10 2025  |
+| Version  | Release date |
+|----------|--------------|
+| 5.0.2    | Sep 27 2024  |
+| 5.2.1    | Dec 18 2024  |
+| 5.2.1-ap | Jan 10 2025  |
 
 ## Changelog
 ### 5.0.2
