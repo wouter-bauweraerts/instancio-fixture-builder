@@ -13,6 +13,7 @@
     <artifactId>instancio-fixture-builder-tests</artifactId>
     <version>5.2.1-ap</version>
 
+
     <dependencies>
         <dependency>
             <groupId>io.github.wouter-bauweraerts</groupId>
@@ -48,12 +49,14 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.jreleaser</groupId>
-                <artifactId>jreleaser-maven-plugin</artifactId>
                 <configuration>
-                    <skip>true</skip>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>${project.groupId}</groupId>
+                            <artifactId>instancio-fixture-builder</artifactId>
+                            <version>${project.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
                 </configuration>
             </plugin>
         </plugins>
