@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>io.github.wouter-bauweraerts</groupId>
+        <artifactId>instancio-fixture-builder-parent</artifactId>
+        <version>5.3.0</version>
+    </parent>
+
+    <artifactId>instancio-fixture-builder</artifactId>
+    <version>5.3.0</version>
+
+    <name>Instancio Fixture Builder</name>
+
+    <description>
+        Library built on top of org.instancio.instancio-core.
+        Provides builder functionality to be used with test fixtures created with Instancio.
+        Allows to make an abstraction of the usage of instancio.
+    </description>
+
+    <url>https://wouter-bauweraerts.github.io/instancio-fixture-builder/</url>
+
+    <scm>
+        <url>https://github.com/wouter-bauweraerts/instancio-fixture-builder</url>
+    </scm>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://opensource.org/license/mit</url>
+            <comments>Copyright 2025 Wouter Bauweraerts</comments>
+        </license>
+    </licenses>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.instancio</groupId>
+            <artifactId>instancio-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.palantir.javapoet</groupId>
+            <artifactId>javapoet</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.auto.service</groupId>
+            <artifactId>auto-service</artifactId>
+        </dependency>
+    </dependencies>
+</project>
