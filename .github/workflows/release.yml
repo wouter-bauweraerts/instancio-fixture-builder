@@ -24,6 +24,6 @@ jobs:
           distribution: 'temurin'
           cache: maven
       - name: Build with Maven
-        if: github.ref != 'refs/heads/main'
+        if: github.ref == 'refs/heads/main'
         run: |
           mvn clean && mvn -pl '!instancio-fixture-builder-tests' -Ppublication && mvn -pl '!instancio-fixture-builder-tests' jreleaser:full-release
