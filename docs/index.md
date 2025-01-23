@@ -41,7 +41,7 @@ Include the following dependency in your pom.xml
 <dependency>
     <groupId>io.github.wouter-bauweraerts</groupId>
     <artifactId>instancio-fixture-builder</artifactId>
-    <version>5.3.0</version>
+    <version>5.3.0.1</version>
 </dependency>
 ```
 
