@@ -124,7 +124,6 @@
                     <inherited>false</inherited>
                     <version>1.16.0</version>
                     <configuration>
-                        <dryrun>true</dryrun>
                         <jreleaser>
                             <signing>
                                 <active>ALWAYS</active>
