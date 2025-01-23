@@ -22,8 +22,10 @@
     </modules>
 
     <properties>
-        <maven.compiler.target>17</maven.compiler.target>
-        <maven.compiler.source>17</maven.compiler.source>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>21</java.version>
+        <maven.compiler.target>21</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
 
         <instancio.version>5.3.0</instancio.version>
         <junit.version>5.11.4</junit.version>
@@ -120,6 +122,7 @@
                     <groupId>org.jreleaser</groupId>
                     <artifactId>jreleaser-maven-plugin</artifactId>
                     <inherited>false</inherited>
+                    <version>1.16.0</version>
                     <configuration>
                         <dryrun>true</dryrun>
                         <jreleaser>

@@ -23,7 +23,7 @@ import io.github.wouterbauweraerts.instancio.fixture.builder.generator.FixtureBu
 
 @SuppressWarnings("unused")
 @SupportedAnnotationTypes("io.github.wouterbauweraerts.instancio.fixture.builder.GenerateFixtureBuilder")
-@SupportedSourceVersion(SourceVersion.RELEASE_17)
+@SupportedSourceVersion(SourceVersion.RELEASE_21)
 @AutoService(Processor.class)
 public class FixtureBuilderProcessor extends AbstractProcessor {
     @Override
