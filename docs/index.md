@@ -41,7 +41,7 @@ Include the following dependency in your pom.xml
 <dependency>
     <groupId>io.github.wouter-bauweraerts</groupId>
     <artifactId>instancio-fixture-builder</artifactId>
-    <version>5.2.1</version>
+    <version>5.3.0</version>
 </dependency>
 ```
 
@@ -98,16 +98,22 @@ Initial release: 5.0.2. For simplicity, I use the same versioning as Instancio.
 | 5.0.2    | Sep 27 2024  |
 | 5.2.1    | Dec 18 2024  |
 | 5.2.1-ap | Jan 10 2025  |
+| 5.3.0    | Jan 23 2025  |
 
 ## Changelog
-### 5.0.2
-- Initial release. Expose AbstractFixtureBuilde
+### 5.3.0
+- Instancio version bump
+- Restructure project
+- Add GH actions
+
+### 5.2.1
+- Add annotation processing / FixtureBuilder code generation
 
 ### 5.2.1
 - Bump instancio version to version 5.2.1
 
-### 5.2.1
-- Add annotation processing / FixtureBuilder code generation
+### 5.0.2
+- Initial release. Expose AbstractFixtureBuilde
 
 __Usage Notes:__ 
 To use the annotation processing, make sure that your project uses at least Java 17! 
