@@ -99,12 +99,17 @@ Initial release: 5.0.2. For simplicity, I use the same versioning as Instancio.
 | 5.2.1    | Dec 18 2024  |
 | 5.2.1-ap | Jan 10 2025  |
 | 5.3.0    | Jan 23 2025  |
+| 5.3.0.1  | Jan 23 2025  |
 
 ## Changelog
+### 5.3.0.1
+- Patched version of 5.3.0 where the annotation processor configration is included
+
 ### 5.3.0
 - Instancio version bump
 - Restructure project
 - Add GH actions
+> META-INF does not contain information to register the annotation processor for code generation. Use version 5.3.0.1 instead
 
 ### 5.2.1
 - Add annotation processing / FixtureBuilder code generation
