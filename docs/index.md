@@ -121,7 +121,7 @@ Initial release: 5.0.2. For simplicity, I use the same versioning as Instancio.
 - Initial release. Expose AbstractFixtureBuilde
 
 __Usage Notes:__ 
-To use the annotation processing, make sure that your project uses at least Java 17! 
+To use the annotation processing, make sure that your project uses at least Java 21!
 
 Code generation has been tested in IntelliJ IDEA 2024.3.1.1 (Ultimate Edition) using both Maven and Gradle on JDK21.
 
