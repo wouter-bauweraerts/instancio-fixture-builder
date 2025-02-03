@@ -61,4 +61,9 @@ public class GenerateFixtureBuilderUtils {
                 processingEnv.getTypeUtils().asElement(element.asType()).toString()
         );
     }
+
+    public Element getSuperclass(Element element) {
+        TypeMirror superclass = processingEnv.getTypeUtils().directSupertypes(element.asType()).get(0);
+        return processingEnv.getTypeUtils().asElement(superclass);
+    }
 }
