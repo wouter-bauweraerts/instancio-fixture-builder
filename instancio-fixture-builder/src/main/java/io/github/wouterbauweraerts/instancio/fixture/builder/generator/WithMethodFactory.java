@@ -36,9 +36,4 @@ class WithMethodFactory {
                 .addStatement("return set($T.fields(f -> \"%s\".equals(f.getName()) && f.getDeclaringClass().getSimpleName().equals(\"%s\")), %s)".formatted(fieldName, parentClassName, fieldName), Select.class)
                 .build();
     }
-
-//    static TargetSelector idSelector() {
-//        return Select.fields(f -> "id".equals(f.getName())
-//                && f.getDeclaringClass().getSimpleName().equals("AbstractPersistable"));
-//    }
 }

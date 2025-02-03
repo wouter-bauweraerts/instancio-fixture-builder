@@ -2,8 +2,6 @@ package io.github.wouterbauweraerts.instancio.fixture.builder.generator.util;
 
 import static java.util.Objects.nonNull;
 
-import java.util.Objects;
-
 import javax.annotation.processing.ProcessingEnvironment;
 import javax.lang.model.element.AnnotationMirror;
 import javax.lang.model.element.Element;

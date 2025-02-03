@@ -14,7 +14,7 @@ import io.github.wouterbauweraerts.instancio.fixture.builder.dummy.inheritance.C
 import io.github.wouterbauweraerts.instancio.fixture.builder.dummy.inheritance.MultiLevelInheritanceChild;
 import io.github.wouterbauweraerts.instancio.fixture.builder.dummy.inheritance.MultiLevelInheritanceChildFixtureBuilder;
 
-public class FixtureBuilderWithInheritanceTest {
+class FixtureBuilderWithInheritanceTest {
     @Test
     void fixtureBuilderAlsoPopulatesFieldsFromBaseClass() {
         assertThat(new ChildClassFixtureBuilder().build())

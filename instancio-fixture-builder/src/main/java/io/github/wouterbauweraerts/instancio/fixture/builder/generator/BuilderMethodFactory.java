@@ -34,9 +34,6 @@ class BuilderMethodFactory {
     }
 
     List<MethodSpec> generateFieldMethods(Element typeToBuild, String builderClassName) {
-        Element superclass = utils.getSuperclass(typeToBuild);
-        String superClassname = superclass.getSimpleName().toString();
-
         Map<String, ParamType> fields = typeToBuild.getEnclosedElements().stream()
                 .filter(e -> e.getKind().equals(ElementKind.FIELD))
                 .collect(Collectors.toMap(
