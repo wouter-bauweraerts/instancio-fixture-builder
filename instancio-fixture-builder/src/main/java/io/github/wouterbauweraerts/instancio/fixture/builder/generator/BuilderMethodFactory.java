@@ -23,14 +23,16 @@ class BuilderMethodFactory {
     private final NameFactory nameFactory;
 
     private final GenerateFixtureBuilderUtils utils;
+    private final ToFixtureBuilderFactory toFixtureBuilderFactory;
 
-    BuilderMethodFactory(BuildMethodFactory buildMethodFactory, SelfMethodFactory selfMethodFactory, WithMethodFactory withMethodFactory, IgnoreMethodFactory ignoreMethodFactory, NameFactory nameFactory, GenerateFixtureBuilderUtils utils) {
+    BuilderMethodFactory(BuildMethodFactory buildMethodFactory, SelfMethodFactory selfMethodFactory, WithMethodFactory withMethodFactory, IgnoreMethodFactory ignoreMethodFactory, NameFactory nameFactory, GenerateFixtureBuilderUtils utils, ToFixtureBuilderFactory toFixtureBuilderFactory) {
         this.buildMethodFactory = buildMethodFactory;
         this.selfMethodFactory = selfMethodFactory;
         this.withMethodFactory = withMethodFactory;
         this.ignoreMethodFactory = ignoreMethodFactory;
         this.nameFactory = nameFactory;
         this.utils = utils;
+        this.toFixtureBuilderFactory = toFixtureBuilderFactory;
     }
 
     List<MethodSpec> generateFieldMethods(Element typeToBuild, String builderClassName) {
@@ -100,5 +102,9 @@ class BuilderMethodFactory {
 
     public MethodSpec generateBuild(Element model, String typeToBuild) {
         return buildMethodFactory.generateBuild(model, typeToBuild);
+    }
+
+    public MethodSpec generateToFixtureBuilder(String builderClassName, Element expectedParameterType) {
+        return toFixtureBuilderFactory.generateToFixtureBuilder(builderClassName, expectedParameterType);
     }
 }

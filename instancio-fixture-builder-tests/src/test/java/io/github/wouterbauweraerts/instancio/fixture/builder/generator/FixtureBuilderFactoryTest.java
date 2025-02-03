@@ -40,12 +40,13 @@ class FixtureBuilderFactoryTest {
         AnnotationSpec generatedAnnotaion = Instancio.create(AnnotationSpec.class);
         MethodSpec self = Instancio.create(METHOD_SPEC_MODEL);
         MethodSpec build = Instancio.create(METHOD_SPEC_MODEL);
+        MethodSpec toFixtureBuilder = Instancio.create(METHOD_SPEC_MODEL);
         List<MethodSpec> builderMethods = Instancio.ofList(METHOD_SPEC_MODEL).create();
 
         when(element.getSimpleName()).thenReturn(elementName);
         when(elementName.toString()).thenReturn(simpleName);
 
-        TypeSpec typeSpec = factory.createBuilderSpec(builderClassName, element, generatedAnnotaion, self, build, builderMethods);
+        TypeSpec typeSpec = factory.createBuilderSpec(builderClassName, element, generatedAnnotaion, self, build, toFixtureBuilder, builderMethods);
 
         assertThat(typeSpec).isNotNull()
                 .isInstanceOf(TypeSpec.class)
@@ -53,7 +54,7 @@ class FixtureBuilderFactoryTest {
                 .returns(SUPERCLASS_PATTERN.formatted(simpleName, builderClassName), e -> e.superclass().toString());
 
         assertThat(typeSpec.methodSpecs()).containsExactlyInAnyOrderElementsOf(
-                Stream.concat(Stream.of(self, build), builderMethods.stream()).toList()
+                Stream.concat(Stream.of(self, build, toFixtureBuilder), builderMethods.stream()).toList()
         );
     }
 }
