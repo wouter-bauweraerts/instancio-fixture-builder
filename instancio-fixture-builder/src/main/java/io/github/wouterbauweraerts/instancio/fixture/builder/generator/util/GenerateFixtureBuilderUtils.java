@@ -2,6 +2,8 @@ package io.github.wouterbauweraerts.instancio.fixture.builder.generator.util;
 
 import static java.util.Objects.nonNull;
 
+import java.util.Objects;
+
 import javax.annotation.processing.ProcessingEnvironment;
 import javax.lang.model.element.AnnotationMirror;
 import javax.lang.model.element.Element;
@@ -60,5 +62,10 @@ public class GenerateFixtureBuilderUtils {
         return ParamType.of(
                 processingEnv.getTypeUtils().asElement(element.asType()).toString()
         );
+    }
+
+    public Element getSuperclass(Element element) {
+        TypeMirror superclass = processingEnv.getTypeUtils().directSupertypes(element.asType()).get(0);
+        return processingEnv.getTypeUtils().asElement(superclass);
     }
 }

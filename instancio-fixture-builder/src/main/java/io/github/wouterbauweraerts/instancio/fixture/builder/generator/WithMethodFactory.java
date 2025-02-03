@@ -23,4 +23,22 @@ class WithMethodFactory {
                 .addStatement("return set($T.field(\"%s\"), %s)".formatted(fieldName, fieldName), Select.class)
                 .build();
     }
+
+    MethodSpec generateInheritedWithMethod(String withMethodName, String fieldName, ParamType paramType, String builderClassName, String parentClassName) {
+        ParameterSpec parameter = ParameterSpec.builder(
+                paramType.isPrimitive() ? paramType.typeName() : ClassName.bestGuess(paramType.fullyQualifiedName()),
+                fieldName
+        ).build();
+        return MethodSpec.methodBuilder(withMethodName)
+                .addModifiers(PUBLIC)
+                .returns(ClassName.bestGuess(builderClassName))
+                .addParameter(parameter)
+                .addStatement("return set($T.fields(f -> \"%s\".equals(f.getName()) && f.getDeclaringClass().getSimpleName().equals(\"%s\")), %s)".formatted(fieldName, parentClassName, fieldName), Select.class)
+                .build();
+    }
+
+//    static TargetSelector idSelector() {
+//        return Select.fields(f -> "id".equals(f.getName())
+//                && f.getDeclaringClass().getSimpleName().equals("AbstractPersistable"));
+//    }
 }

@@ -10,6 +10,7 @@ import org.instancio.Instancio;
 import org.instancio.InstancioApi;
 import org.instancio.Model;
 import org.instancio.Selector;
+import org.instancio.TargetSelector;
 
 /**
  *
@@ -17,7 +18,7 @@ import org.instancio.Selector;
  * @param <SELF> : The name of the subclass of the AbstractFixtureBuilder
  */
 public abstract class AbstractFixtureBuilder<TYPEBUILDER, SELF extends AbstractFixtureBuilder<TYPEBUILDER, SELF>> {
-    private final Map<Selector, Object> fieldValues = new HashMap<>();
+    private final Map<TargetSelector, Object> fieldValues = new HashMap<>();
 
     /**
      * setField method will define the value for a given field, which will be used once the instance is constructed
@@ -45,7 +46,7 @@ public abstract class AbstractFixtureBuilder<TYPEBUILDER, SELF extends AbstractF
      * @param value value to assign
      * @return current instance of FixtureBuilder
      */
-    protected SELF set(Selector selector, Object value) {
+    protected SELF set(TargetSelector selector, Object value) {
         fieldValues.put(selector, value);
         return self();
     }
