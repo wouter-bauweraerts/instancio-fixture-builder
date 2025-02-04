@@ -21,6 +21,8 @@ class FixtureBuilderFactory {
             AnnotationSpec generatedAnnotation,
             MethodSpec self,
             MethodSpec build,
+            MethodSpec toFixtureBuilder,
+            MethodSpec instanceFactoryMethod,
             List<MethodSpec> builderMethods) {
         return TypeSpec.classBuilder(builderClassName)
                 .addModifiers(PUBLIC)
@@ -34,6 +36,8 @@ class FixtureBuilderFactory {
                 )
                 .addMethod(self)
                 .addMethod(build)
+                .addMethod(instanceFactoryMethod)
+                .addMethod(toFixtureBuilder)
                 .addMethods(builderMethods)
                 .build();
     }

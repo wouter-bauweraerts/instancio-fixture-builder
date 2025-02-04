@@ -21,15 +21,19 @@ class BuilderMethodFactory {
     private final WithMethodFactory withMethodFactory;
     private final IgnoreMethodFactory ignoreMethodFactory;
     private final NameFactory nameFactory;
+    private final FixtureBuilderMethodFactory fixtureBuilderMethodFactory;
 
     private final GenerateFixtureBuilderUtils utils;
+    private final ToFixtureBuilderFactory toFixtureBuilderFactory;
 
-    BuilderMethodFactory(BuildMethodFactory buildMethodFactory, SelfMethodFactory selfMethodFactory, WithMethodFactory withMethodFactory, IgnoreMethodFactory ignoreMethodFactory, NameFactory nameFactory, GenerateFixtureBuilderUtils utils) {
+    BuilderMethodFactory(BuildMethodFactory buildMethodFactory, SelfMethodFactory selfMethodFactory, WithMethodFactory withMethodFactory, IgnoreMethodFactory ignoreMethodFactory, NameFactory nameFactory, FixtureBuilderMethodFactory fixtureBuilderMethodFactory, ToFixtureBuilderFactory toFixtureBuilderFactory, GenerateFixtureBuilderUtils utils) {
         this.buildMethodFactory = buildMethodFactory;
         this.selfMethodFactory = selfMethodFactory;
         this.withMethodFactory = withMethodFactory;
         this.ignoreMethodFactory = ignoreMethodFactory;
         this.nameFactory = nameFactory;
+        this.fixtureBuilderMethodFactory = fixtureBuilderMethodFactory;
+        this.toFixtureBuilderFactory = toFixtureBuilderFactory;
         this.utils = utils;
     }
 
@@ -43,7 +47,7 @@ class BuilderMethodFactory {
 
         Stream<MethodSpec> currentClassBuilderMethods = fields.entrySet()
                 .stream()
-                .flatMap(e -> generateBuilderMethodsForField(e.getKey(), e.getValue(), builderClassName));
+                .flatMap(e -> generateBuilderMethodsForField(e.getKey(), e.getValue(), builderClassName, typeToBuild));
 
         return Stream.concat(
                 currentClassBuilderMethods,
@@ -74,12 +78,12 @@ class BuilderMethodFactory {
         );
     }
 
-    private Stream<MethodSpec> generateBuilderMethodsForField(String fieldName, ParamType paramType, String builderClassName) {
+    private Stream<MethodSpec> generateBuilderMethodsForField(String fieldName, ParamType paramType, String builderClassName, Element declaringClass) {
         String withMethodName = nameFactory.fieldMethodWithPrefix("with", fieldName);
         String ignoreMethodName = nameFactory.fieldMethodWithPrefix("ignore", fieldName);
 
         return Stream.of(
-                withMethodFactory.generateWithMethod(withMethodName, fieldName, paramType, builderClassName),
+                withMethodFactory.generateWithMethod(withMethodName, fieldName, declaringClass.getSimpleName().toString(), paramType, builderClassName),
                 ignoreMethodFactory.generateIgnoreMethod(ignoreMethodName, withMethodName, builderClassName, paramType.isPrimitive())
         ).filter(Objects::nonNull);
     }
@@ -89,7 +93,7 @@ class BuilderMethodFactory {
         String ignoreMethodName = nameFactory.fieldMethodWithPrefix("ignore", fieldName);
 
         return Stream.of(
-                withMethodFactory.generateInheritedWithMethod(withMethodName, fieldName, paramType, builderClassName, superClassname),
+                withMethodFactory.generateWithMethod(withMethodName, fieldName, superClassname, paramType, builderClassName),
                 ignoreMethodFactory.generateIgnoreMethod(ignoreMethodName, withMethodName, builderClassName, paramType.isPrimitive())
         ).filter(Objects::nonNull);
     }
@@ -100,5 +104,13 @@ class BuilderMethodFactory {
 
     public MethodSpec generateBuild(Element model, String typeToBuild) {
         return buildMethodFactory.generateBuild(model, typeToBuild);
+    }
+
+    public MethodSpec generateToFixtureBuilder(String builderClassName, Element expectedParameterType) {
+        return toFixtureBuilderFactory.generateToFixtureBuilder(builderClassName, expectedParameterType);
+    }
+
+    public MethodSpec generateFixtureBuilderMethod(String builderClassName) {
+        return fixtureBuilderMethodFactory.generateFixtureBuilder(builderClassName);
     }
 }

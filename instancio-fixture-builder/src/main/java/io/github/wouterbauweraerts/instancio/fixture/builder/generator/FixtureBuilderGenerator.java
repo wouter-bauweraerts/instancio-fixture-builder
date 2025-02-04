@@ -49,6 +49,8 @@ public class FixtureBuilderGenerator {
 
         MethodSpec selfMethod = methodFactory.generateSelf(builderClassName);
         MethodSpec buildMethod = methodFactory.generateBuild(model, builderForClass.getSimpleName().toString());
+        MethodSpec instanceFactoryMethod = methodFactory.generateFixtureBuilderMethod(builderClassName);
+        MethodSpec toFixtureBuilderMethod = methodFactory.generateToFixtureBuilder(builderClassName, builderForClass);
         List<MethodSpec> fieldMethods = methodFactory.generateFieldMethods(builderForClass, builderClassName);
 
         TypeSpec fixtureBuilderClassDefinition = fixtureBuilderFactory.createBuilderSpec(
@@ -57,6 +59,8 @@ public class FixtureBuilderGenerator {
                 generatedAnnotation,
                 selfMethod,
                 buildMethod,
+                toFixtureBuilderMethod,
+                instanceFactoryMethod,
                 fieldMethods
         );
 
