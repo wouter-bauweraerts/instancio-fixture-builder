@@ -16,8 +16,12 @@ class FactoryProvider {
                 new IgnoreMethodFactory(),
                 nameFactory(),
                 new GenerateFixtureBuilderUtils(processingEnv),
-                new ToFixtureBuilderFactory()
+                toFixtureBuilderFactory(processingEnv)
         );
+    }
+
+    static ToFixtureBuilderFactory toFixtureBuilderFactory(ProcessingEnvironment processingEnv) {
+        return new ToFixtureBuilderFactory(nameFactory(), new GenerateFixtureBuilderUtils(processingEnv));
     }
 
     static NameFactory nameFactory() {
