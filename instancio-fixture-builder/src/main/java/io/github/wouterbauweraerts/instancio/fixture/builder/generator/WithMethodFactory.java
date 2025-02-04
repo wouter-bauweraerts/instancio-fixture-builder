@@ -11,29 +11,19 @@ import com.palantir.javapoet.ParameterSpec;
 import io.github.wouterbauweraerts.instancio.fixture.builder.generator.parameter.ParamType;
 
 class WithMethodFactory {
-    MethodSpec generateWithMethod(String withMethodName, String fieldName, ParamType paramType, String builderClassName) {
-        ParameterSpec parameter = ParameterSpec.builder(
-                paramType.isPrimitive() ? paramType.typeName() : ClassName.bestGuess(paramType.fullyQualifiedName()),
-                fieldName
-        ).build();
-        return MethodSpec.methodBuilder(withMethodName)
-                .addModifiers(PUBLIC)
-                .returns(ClassName.bestGuess(builderClassName))
-                .addParameter(parameter)
-                .addStatement("return set($T.field(\"%s\"), %s)".formatted(fieldName, fieldName), Select.class)
-                .build();
-    }
+    MethodSpec generateWithMethod(String withMethodName, String fieldName, String declaringClass, ParamType paramType, String builderClassName) {
+        ClassName declaringClassName = ClassName.bestGuess(declaringClass);
+        ClassName returnTypeClassName = ClassName.bestGuess(builderClassName);
 
-    MethodSpec generateInheritedWithMethod(String withMethodName, String fieldName, ParamType paramType, String builderClassName, String parentClassName) {
         ParameterSpec parameter = ParameterSpec.builder(
                 paramType.isPrimitive() ? paramType.typeName() : ClassName.bestGuess(paramType.fullyQualifiedName()),
                 fieldName
         ).build();
         return MethodSpec.methodBuilder(withMethodName)
                 .addModifiers(PUBLIC)
-                .returns(ClassName.bestGuess(builderClassName))
+                .returns(returnTypeClassName)
                 .addParameter(parameter)
-                .addStatement("return set($T.fields(f -> \"%s\".equals(f.getName()) && f.getDeclaringClass().getSimpleName().equals(\"%s\")), %s)".formatted(fieldName, parentClassName, fieldName), Select.class)
+                .addStatement("return set($T.field($T.class, \"%s\"), %s)".formatted(fieldName, fieldName), Select.class, declaringClassName)
                 .build();
     }
 }

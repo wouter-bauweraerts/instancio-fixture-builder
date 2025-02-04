@@ -47,7 +47,11 @@ public abstract class AbstractFixtureBuilder<TYPEBUILDER, SELF extends AbstractF
      * @return current instance of FixtureBuilder
      */
     protected SELF set(TargetSelector selector, Object value) {
-        fieldValues.put(selector, value);
+        if(fieldValues.containsKey(selector)) {
+            fieldValues.replace(selector, value);
+        } else {
+            fieldValues.put(selector, value);
+        }
         return self();
     }
 

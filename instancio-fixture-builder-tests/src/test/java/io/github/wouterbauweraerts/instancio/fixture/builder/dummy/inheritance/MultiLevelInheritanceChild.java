@@ -6,7 +6,7 @@ import java.util.Objects;
 public class MultiLevelInheritanceChild extends ParentClass{
     private LocalDate childField;
 
-    public MultiLevelInheritanceChild(String baseClassField, int parentField, LocalDate childField) {
+    public MultiLevelInheritanceChild(String baseClassField, Integer parentField, LocalDate childField) {
         super(baseClassField, parentField);
         this.childField = childField;
     }

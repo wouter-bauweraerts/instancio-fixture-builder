@@ -48,7 +48,8 @@ class DummyRecordFixtureBuilderTest {
                 "ignoreName",
                 "ignoreBirthDate",
                 "ignoreContactDetails",
-                "ignoreReliabilityScore"
+                "ignoreReliabilityScore",
+                "fixtureBuilder"
         ).map(name -> DynamicTest.dynamicTest(name, () -> {
             assertAll(() -> {
                 AtomicReference<Method> methodReference = new AtomicReference<>();

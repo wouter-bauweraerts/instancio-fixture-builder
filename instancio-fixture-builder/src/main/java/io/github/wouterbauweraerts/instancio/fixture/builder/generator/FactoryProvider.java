@@ -15,8 +15,9 @@ class FactoryProvider {
                 new WithMethodFactory(),
                 new IgnoreMethodFactory(),
                 nameFactory(),
-                new GenerateFixtureBuilderUtils(processingEnv),
-                toFixtureBuilderFactory(processingEnv)
+                new FixtureBuilderMethodFactory(),
+                toFixtureBuilderFactory(processingEnv),
+                new GenerateFixtureBuilderUtils(processingEnv)
         );
     }
 

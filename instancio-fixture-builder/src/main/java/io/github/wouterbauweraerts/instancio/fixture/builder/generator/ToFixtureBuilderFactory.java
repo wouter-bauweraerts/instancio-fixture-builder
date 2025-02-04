@@ -18,7 +18,8 @@ import com.palantir.javapoet.TypeName;
 
 import io.github.wouterbauweraerts.instancio.fixture.builder.generator.util.GenerateFixtureBuilderUtils;
 
-class ToFixtureBuilderFactory {  // TODO WRITE TESTS!!!!
+class ToFixtureBuilderFactory {
+
     private final NameFactory nameFactory;
     private final GenerateFixtureBuilderUtils utils;
 
@@ -29,6 +30,7 @@ class ToFixtureBuilderFactory {  // TODO WRITE TESTS!!!!
     }
 
     public MethodSpec generateToFixtureBuilder(String builderClassName, Element expectedParameterType) {
+
         return MethodSpec.methodBuilder("toFixtureBuilder")
                 .addModifiers(PUBLIC)
                 .addModifiers(STATIC)

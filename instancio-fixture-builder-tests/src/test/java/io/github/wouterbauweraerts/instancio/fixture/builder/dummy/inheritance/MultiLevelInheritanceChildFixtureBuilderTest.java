@@ -8,6 +8,10 @@ import java.time.LocalDate;
 import org.instancio.Instancio;
 import org.junit.jupiter.api.Test;
 
+import io.github.wouterbauweraerts.instancio.fixture.builder.dummy.ContactDetailsFixtures;
+import io.github.wouterbauweraerts.instancio.fixture.builder.generate.Dummy;
+import io.github.wouterbauweraerts.instancio.fixture.builder.generate.DummyFixtureBuilder;
+
 class MultiLevelInheritanceChildFixtureBuilderTest {
     @Test
     void canInstantiateInstanceWithoutModifications() {
@@ -47,6 +51,42 @@ class MultiLevelInheritanceChildFixtureBuilderTest {
     }
 
     @Test
+    void canModifyShallowCopyWithoutChangingTheOriginal_noInheritance() {
+        String doe = "Doe";
+        String john = "John";
+        String jane = "Jane";
+        LocalDate johnDate = LocalDate.now().minusYears(25);
+        LocalDate janeDate = LocalDate.now().minusYears(22);
+        int johnReliability = 15;
+        int janeReliability = 16;
+
+
+        Dummy original = new Dummy(doe, john, johnDate, johnReliability, ContactDetailsFixtures.contactDetails());
+
+        Dummy copy = DummyFixtureBuilder.toFixtureBuilder(original)
+                .withFirstName(jane)
+                .withBirthDate(janeDate)
+                .withReliabilityScore(janeReliability)
+                .ignoreContactDetails()
+                .build();
+
+        assertThat(copy).isNotSameAs(original)
+                .isNotEqualTo(original);
+
+        assertThat(original.getName()).isEqualTo(doe);
+        assertThat(original.getFirstName()).isEqualTo(john);
+        assertThat(original.getBirthDate()).isEqualTo(johnDate);
+        assertThat(original.getReliabilityScore()).isEqualTo(johnReliability);
+        assertThat(original.getContactDetails()).isNotNull();
+
+        assertThat(copy.getName()).isEqualTo(doe);
+        assertThat(copy.getFirstName()).isEqualTo(jane);
+        assertThat(copy.getBirthDate()).isEqualTo(janeDate);
+        assertThat(copy.getReliabilityScore()).isEqualTo(janeReliability);
+        assertThat(copy.getContactDetails()).isNull();
+    }
+
+    @Test
     void canModifyShallowCopyWithoutChangingTheOriginal() {
         final String originalString = "The Original Value";
         final String newString = "The New Value";
@@ -54,11 +94,7 @@ class MultiLevelInheritanceChildFixtureBuilderTest {
         final LocalDate newDate = LocalDate.now().plusYears(2);
         final Integer newInt = 42;
 
-        MultiLevelInheritanceChild original = new MultiLevelInheritanceChildFixtureBuilder()
-                .ignoreParentField()
-                .withBaseClassField(originalString)
-                .withChildField(originalDate)
-                .build();
+        MultiLevelInheritanceChild original = new MultiLevelInheritanceChild(originalString, null, originalDate);
 
         MultiLevelInheritanceChild copy = MultiLevelInheritanceChildFixtureBuilder.toFixtureBuilder(original)
                 .withChildField(newDate)
