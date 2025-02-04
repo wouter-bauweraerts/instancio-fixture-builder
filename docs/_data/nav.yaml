@@ -1,0 +1,17 @@
+toc:
+- title: Core
+  subfolderitems:
+  - page: Classpath Scanning
+    url: /instancio-fixture-builder/modules/core/classpath-scanning
+  - page: Inject
+    url: /instancio-fixture-builder/modules/core/inject
+  - page: Mock-Configuration
+    url: /instancio-fixture-builder/modules/core/mock-configuration
+  - page: Predefined
+    url: /instancio-fixture-builder/modules/core/predefined
+  - page: Resolve
+    url: /instancio-fixture-builder/modules/core/resolve
+- title: jUnit-Mockito
+  subfolderitems:
+  - page: Module Info
+    url: /instancio-fixture-builder/modules/junit-mockito/us-junit-mockito
