@@ -26,7 +26,16 @@ class BuilderMethodFactory {
     private final GenerateFixtureBuilderUtils utils;
     private final ToFixtureBuilderFactory toFixtureBuilderFactory;
 
-    BuilderMethodFactory(BuildMethodFactory buildMethodFactory, SelfMethodFactory selfMethodFactory, WithMethodFactory withMethodFactory, IgnoreMethodFactory ignoreMethodFactory, NameFactory nameFactory, FixtureBuilderMethodFactory fixtureBuilderMethodFactory, ToFixtureBuilderFactory toFixtureBuilderFactory, GenerateFixtureBuilderUtils utils) {
+    BuilderMethodFactory(
+            BuildMethodFactory buildMethodFactory,
+            SelfMethodFactory selfMethodFactory,
+            WithMethodFactory withMethodFactory,
+            IgnoreMethodFactory ignoreMethodFactory,
+            NameFactory nameFactory,
+            FixtureBuilderMethodFactory fixtureBuilderMethodFactory,
+            ToFixtureBuilderFactory toFixtureBuilderFactory,
+            GenerateFixtureBuilderUtils utils
+    ) {
         this.buildMethodFactory = buildMethodFactory;
         this.selfMethodFactory = selfMethodFactory;
         this.withMethodFactory = withMethodFactory;
