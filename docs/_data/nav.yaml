@@ -1,17 +1,21 @@
 toc:
-- title: Core
+- title: Fixture Builder examples
   subfolderitems:
-  - page: Classpath Scanning
-    url: /instancio-fixture-builder/modules/core/classpath-scanning
-  - page: Inject
-    url: /instancio-fixture-builder/modules/core/inject
-  - page: Mock-Configuration
-    url: /instancio-fixture-builder/modules/core/mock-configuration
-  - page: Predefined
-    url: /instancio-fixture-builder/modules/core/predefined
-  - page: Resolve
-    url: /instancio-fixture-builder/modules/core/resolve
-- title: jUnit-Mockito
+  - page: Manual implementation
+    url: /instancio-fixture-builder/examples/manual
+  - page: Code Generation
+    url: /instancio-fixture-builder/examples/generated
+- title: Usage
   subfolderitems:
-  - page: Module Info
-    url: /instancio-fixture-builder/modules/junit-mockito/us-junit-mockito
+    - page: Installation
+      url: /instancio-fixture-builder/usage/installation
+    - page: Create instance
+      url: /instancio-fixture-builder/usage/create
+    - page: Copy instance
+      url: /instancio-fixture-builder/usage/copy
+- title: Versions
+  subfolderitems:
+  - page: Releases
+    url: /instancio-fixture-builder/versions/releases
+  - page: Changelog
+    url: /instancio-fixture-builder/versions/changelog
