@@ -5,7 +5,7 @@
 
     <groupId>io.github.wouter-bauweraerts</groupId>
     <artifactId>instancio-fixture-builder-parent</artifactId>
-    <version>5.3.1-SNAPSHOT</version>
+    <version>5.3.0.2</version>
     <packaging>pom</packaging>
 
     <name>Instancio Fixture Builder Parent</name>
