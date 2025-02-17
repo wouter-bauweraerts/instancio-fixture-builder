@@ -100,10 +100,16 @@ Initial release: 5.0.2. For simplicity, I use the same versioning as Instancio.
 | 5.2.1-ap | Jan 10 2025  |
 | 5.3.0    | Jan 23 2025  |
 | 5.3.0.1  | Jan 23 2025  |
+| 5.3.0.2  | Feb 17 2025  |
 
 ## Changelog
+
+### 5.3.0.2
+- Improved support for inheritance
+- Add toFixtureBuilder functionality allowing you to create a fixture builder from an existing instance
+
 ### 5.3.0.1
-- Patched version of 5.3.0 where the annotation processor configration is included
+- Patched version of 5.3.0 where the annotation processor configuration is included
 
 ### 5.3.0
 - Instancio version bump
