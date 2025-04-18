@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import javax.lang.model.element.Element;
+import javax.lang.model.element.Modifier;
 
 import com.palantir.javapoet.ClassName;
 import com.palantir.javapoet.CodeBlock;
@@ -58,6 +59,7 @@ class ToFixtureBuilderFactory {
                 elementToClone.getEnclosedElements().stream(),
                 inheritedFields(elementToClone)
                 ).filter(e -> e.getKind().equals(FIELD))
+                .filter(e -> !e.getModifiers().contains(Modifier.STATIC))
                 .map(e -> e.getSimpleName().toString())
                 .collect(Collectors.toMap(
                         name -> nameFactory.fieldMethodWithPrefix("with", name),

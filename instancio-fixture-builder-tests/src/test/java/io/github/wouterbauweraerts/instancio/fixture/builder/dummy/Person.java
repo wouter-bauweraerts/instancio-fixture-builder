@@ -3,6 +3,8 @@ package io.github.wouterbauweraerts.instancio.fixture.builder.dummy;
 import java.time.LocalDate;
 
 public class Person {
+    private static String SHOULD_NOT_MAKE_TEST_FAIL = "Should not make test fail";
+
     private final String name, firstName;
     private final LocalDate birthDate;
     private final Integer reliabilityScore;

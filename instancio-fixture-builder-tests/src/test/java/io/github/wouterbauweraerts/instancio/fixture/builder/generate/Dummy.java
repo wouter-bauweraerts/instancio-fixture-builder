@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import io.github.wouterbauweraerts.instancio.fixture.builder.dummy.ContactDetails;
 
 public class Dummy {
+    private static String SHOULD_NOT_MAKE_TEST_FAIL = "Should not make test fail";
+
     private final String name, firstName;
     private final LocalDate birthDate;
     private final Integer reliabilityScore;

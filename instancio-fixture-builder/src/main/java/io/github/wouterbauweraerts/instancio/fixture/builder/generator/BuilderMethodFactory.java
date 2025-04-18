@@ -8,6 +8,7 @@ import java.util.stream.Stream;
 
 import javax.lang.model.element.Element;
 import javax.lang.model.element.ElementKind;
+import javax.lang.model.element.Modifier;
 
 import com.palantir.javapoet.MethodSpec;
 
@@ -49,6 +50,7 @@ class BuilderMethodFactory {
     List<MethodSpec> generateFieldMethods(Element typeToBuild, String builderClassName) {
         Map<String, ParamType> fields = typeToBuild.getEnclosedElements().stream()
                 .filter(e -> e.getKind().equals(ElementKind.FIELD))
+                .filter(e -> !e.getModifiers().contains(Modifier.STATIC))
                 .collect(Collectors.toMap(
                         element -> element.getSimpleName().toString(),
                         utils::extractParamType
@@ -74,6 +76,7 @@ class BuilderMethodFactory {
 
         Map<String, ParamType> fields = superclass.getEnclosedElements().stream()
                 .filter(e -> e.getKind().equals(ElementKind.FIELD))
+                .filter(e -> !e.getModifiers().contains(Modifier.STATIC))
                 .collect(Collectors.toMap(
                         element -> element.getSimpleName().toString(),
                         utils::extractParamType
