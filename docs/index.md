@@ -103,8 +103,16 @@ Initial release: 5.0.2. For simplicity, I use the same versioning as Instancio.
 | 5.3.0.2  | Feb 17 2025  |
 | 5.4.0    | Mar 10 2025  |
 | 5.4.1    | Mar 25 2025  |
+| 5.4.1.1  | Apr 18 2025  |
+| 5.4.1.2  | Apr 24 2025   |
 
 ## Changelog
+
+### 5.4.1.2
+- Fix issue with primitive booleans in toFixtureBuilder generation
+
+### 5.4.1.1
+- Fix issue with static fields
 
 ### 5.4.1
 - Bump instancio version to 5.4.1
