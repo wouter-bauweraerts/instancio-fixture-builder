@@ -11,6 +11,7 @@ import java.util.stream.Stream;
 
 import javax.lang.model.element.Element;
 import javax.lang.model.element.Modifier;
+import javax.lang.model.type.TypeKind;
 
 import com.palantir.javapoet.ClassName;
 import com.palantir.javapoet.CodeBlock;
@@ -56,15 +57,21 @@ class ToFixtureBuilderFactory {
         CodeBlock.Builder builder = CodeBlock.builder();
 
         Stream.concat(
-                elementToClone.getEnclosedElements().stream(),
-                inheritedFields(elementToClone)
+                        elementToClone.getEnclosedElements().stream(),
+                        inheritedFields(elementToClone)
                 ).filter(e -> e.getKind().equals(FIELD))
                 .filter(e -> !e.getModifiers().contains(Modifier.STATIC))
-                .map(e -> e.getSimpleName().toString())
+                .map(e -> new ElementTypeTriple(
+                        e.getSimpleName().toString(),
+                        e.asType().getKind().equals(TypeKind.BOOLEAN),
+                        e.asType().getKind().isPrimitive()
+                        )
+                )
                 .collect(Collectors.toMap(
-                        name -> nameFactory.fieldMethodWithPrefix("with", name),
-                        name -> getObjFieldValue(name, elementToClone)
-                )).entrySet().stream()
+                        triple -> nameFactory.fieldMethodWithPrefix("with", triple.name),
+                        triple -> getObjFieldValue(triple, elementToClone)
+                ))
+                .entrySet().stream()
                 .map(e -> "builder.%s(%s)".formatted(e.getKey(), e.getValue()))
                 .forEach(builder::addStatement);
 
@@ -85,10 +92,18 @@ class ToFixtureBuilderFactory {
         );
     }
 
-    private String getObjFieldValue(String fieldName, Element elementToClone) {
+    private String getObjFieldValue(ElementTypeTriple triple, Element elementToClone) {
+        String getMethod = nameFactory.fieldMethodWithPrefix(triple.isBoolean() && triple.isPrimitive() ? "is" :"get", triple.name());
         return (elementToClone.getKind().equals(CLASS)
-                ? CodeBlock.builder().addStatement("obj.$L()", nameFactory.fieldMethodWithPrefix("get", fieldName)).build().toString()
-                : CodeBlock.builder().addStatement("obj.$L()", fieldName).build().toString()
+                ? CodeBlock.builder().addStatement("obj.$L()", getMethod).build().toString()
+                : CodeBlock.builder().addStatement("obj.$L()", triple.name()).build().toString()
         ).trim().replace(";", "");
+    }
+
+    private static record ElementTypeTriple(
+            String name,
+            boolean isBoolean,
+            boolean isPrimitive
+    ) {
     }
 }
