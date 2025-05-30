@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 import java.time.LocalDate;
+import java.util.Random;
 
 import org.instancio.Instancio;
 import org.junit.jupiter.api.Test;
@@ -59,9 +60,10 @@ class MultiLevelInheritanceChildFixtureBuilderTest {
         LocalDate janeDate = LocalDate.now().minusYears(22);
         int johnReliability = 15;
         int janeReliability = 16;
+        boolean isValid = new Random().nextBoolean();
 
 
-        Dummy original = new Dummy(doe, john, johnDate, johnReliability, ContactDetailsFixtures.contactDetails());
+        Dummy original = new Dummy(doe, john, johnDate, johnReliability, ContactDetailsFixtures.contactDetails(), isValid);
 
         Dummy copy = DummyFixtureBuilder.toFixtureBuilder(original)
                 .withFirstName(jane)
@@ -84,6 +86,7 @@ class MultiLevelInheritanceChildFixtureBuilderTest {
         assertThat(copy.getBirthDate()).isEqualTo(janeDate);
         assertThat(copy.getReliabilityScore()).isEqualTo(janeReliability);
         assertThat(copy.getContactDetails()).isNull();
+        assertThat(copy.isValid()).isEqualTo(isValid);
     }
 
     @Test

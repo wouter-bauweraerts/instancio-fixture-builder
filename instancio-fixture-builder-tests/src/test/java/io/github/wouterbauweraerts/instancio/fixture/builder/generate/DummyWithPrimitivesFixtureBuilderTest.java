@@ -18,6 +18,7 @@ class DummyWithPrimitivesFixtureBuilderTest {
         LocalDate birthDate = LocalDate.now();
         Integer reliabilityScore = new Random().nextInt();
         ContactDetails contactDetails = ContactDetailsFixtures.contactDetails();
+        boolean isValid = new Random().nextBoolean();
 
         assertThat(
                 new DummyFixtureBuilder()
@@ -26,8 +27,9 @@ class DummyWithPrimitivesFixtureBuilderTest {
                         .withBirthDate(birthDate)
                         .withReliabilityScore(reliabilityScore)
                         .withContactDetails(contactDetails)
+                        .withIsValid(isValid)
                         .build()
         ).usingRecursiveComparison()
-                .isEqualTo(new Dummy(name, firstName, birthDate, reliabilityScore, contactDetails));
+                .isEqualTo(new Dummy(name, firstName, birthDate, reliabilityScore, contactDetails, isValid));
     }
 }

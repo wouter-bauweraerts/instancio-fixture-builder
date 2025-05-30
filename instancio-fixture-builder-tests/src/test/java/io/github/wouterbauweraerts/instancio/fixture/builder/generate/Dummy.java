@@ -11,13 +11,15 @@ public class Dummy {
     private final LocalDate birthDate;
     private final Integer reliabilityScore;
     private final ContactDetails contactDetails;
+    private final boolean isValid;
 
-    public Dummy(String name, String firstName, LocalDate birthDate, Integer reliabilityScore, ContactDetails contactDetails) {
+    public Dummy(String name, String firstName, LocalDate birthDate, Integer reliabilityScore, ContactDetails contactDetails, boolean isValid) {
         this.name = name;
         this.firstName = firstName;
         this.birthDate = birthDate;
         this.reliabilityScore = reliabilityScore;
         this.contactDetails = contactDetails;
+        this.isValid = isValid;
     }
 
     public String getName() {
@@ -38,5 +40,9 @@ public class Dummy {
 
     public ContactDetails getContactDetails() {
         return contactDetails;
+    }
+
+    public boolean isValid() {
+        return isValid;
     }
 }
