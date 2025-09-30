@@ -21,3 +21,5 @@ Check [Documentation site](https://wouter-bauweraerts.github.io/instancio-fixtur
 
 ## Release process
 Run `mvn -Ppublication` to stage artifacts
+Run `mvn jreleaser:assemble`
+Run `mvn jreleaser:deploy`
