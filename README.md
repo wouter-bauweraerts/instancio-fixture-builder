@@ -20,6 +20,6 @@ There you can also find how to include it with different build systems.
 Check [Documentation site](https://wouter-bauweraerts.github.io/instancio-fixture-builder/) for more details
 
 ## Release process
-Run `mvn -Ppublication` to stage artifacts
-Run `mvn jreleaser:assemble`
-Run `mvn jreleaser:deploy`
+- Run `mvn -Ppublication` to stage artifacts
+- Run `mvn jreleaser:assemble`
+- Run `mvn jreleaser:deploy`
