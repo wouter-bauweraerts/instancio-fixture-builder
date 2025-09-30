@@ -7,11 +7,11 @@
     <parent>
         <groupId>io.github.wouter-bauweraerts</groupId>
         <artifactId>instancio-fixture-builder-parent</artifactId>
-        <version>5.4.1.2</version>
+        <version>5.5.0</version>
     </parent>
 
     <artifactId>instancio-fixture-builder</artifactId>
-    <version>5.4.1.2</version>
+    <version>5.5.0</version>
 
     <name>Instancio Fixture Builder</name>
 

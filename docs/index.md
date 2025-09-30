@@ -95,18 +95,24 @@ Initial release: 5.0.2. For simplicity, I use the same versioning as Instancio.
 
 | Version  | Release date |
 |----------|--------------|
-| 5.0.2    | Sep 27 2024  |
-| 5.2.1    | Dec 18 2024  |
-| 5.2.1-ap | Jan 10 2025  |
-| 5.3.0    | Jan 23 2025  |
-| 5.3.0.1  | Jan 23 2025  |
-| 5.3.0.2  | Feb 17 2025  |
-| 5.4.0    | Mar 10 2025  |
-| 5.4.1    | Mar 25 2025  |
+| 5.5.0    | Sep 30 2025  |
+| 5.4.1.2  | Apr 24 2025  |
 | 5.4.1.1  | Apr 18 2025  |
-| 5.4.1.2  | Apr 24 2025   |
+| 5.4.1    | Mar 25 2025  |
+| 5.4.0    | Mar 10 2025  |
+| 5.3.0.2  | Feb 17 2025  |
+| 5.3.0.1  | Jan 23 2025  |
+| 5.3.0    | Jan 23 2025  |
+| 5.2.1-ap | Jan 10 2025  |
+| 5.2.1    | Dec 18 2024  |
+| 5.0.2    | Sep 27 2024  |
 
 ## Changelog
+
+### 5.5.0
+- Bump instancio version to 5.5.0
+- Bump junit version to 5.12.2
+- Bump Mockito version to 5.16.2
 
 ### 5.4.1.2
 - Fix issue with primitive booleans in toFixtureBuilder generation

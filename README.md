@@ -18,3 +18,6 @@ There you can also find how to include it with different build systems.
 ## Documentation
 
 Check [Documentation site](https://wouter-bauweraerts.github.io/instancio-fixture-builder/) for more details
+
+## Release process
+Run `mvn -Ppublication` to stage artifacts
