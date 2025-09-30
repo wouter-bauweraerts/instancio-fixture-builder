@@ -95,6 +95,7 @@ Initial release: 5.0.2. For simplicity, I use the same versioning as Instancio.
 
 | Version  | Release date |
 |----------|--------------|
+| 5.5.1    | Sep 30 2025  |
 | 5.5.0    | Sep 30 2025  |
 | 5.4.1.2  | Apr 24 2025  |
 | 5.4.1.1  | Apr 18 2025  |
@@ -108,6 +109,9 @@ Initial release: 5.0.2. For simplicity, I use the same versioning as Instancio.
 | 5.0.2    | Sep 27 2024  |
 
 ## Changelog
+
+### 5.5.1
+- Bump instancio version to 5.5.1
 
 ### 5.5.0
 - Bump instancio version to 5.5.0
